@@ -1,0 +1,2 @@
+work on decay timers / limits on pet actions
+change zz to and energy level so all stats should be around 10 so keep things neat

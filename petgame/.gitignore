@@ -1,0 +1,9 @@
+main.exe
+fangame.exe
+game
+tasks.json
+main
+*.o
+*.dll
+*.exe
+*.out

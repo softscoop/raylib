@@ -1,0 +1,12 @@
+- save game object
+- death animation
+- death screen
+- double jump refresh
+- figure out how to delete bullets from the vector
+- make a better level function that loads the collision map for the player
+- does the csv file need to be 19 x 25? the for each loop doesn't care
+- stop the warp from going above the max number of levels causing seg fault
+- stop textures being loaded every warp or figure out if i can unload them
+- g++ main.cpp -IC:/Raylib/include -LC:/Raylib/lib -lraylib -lopengl32 -lgdi32 -lwinmm -mwindows -static-libstdc++ -static-libgcc -static ./src/leveldata.cpp ./src/player.cpp ./src/world.cpp
+- g++ -o mousemaze-mac main.cpp -framework IOKit -framework Cocoa -framework OpenGL -lraylib -std=c++11 -Wall src/leveldata.cpp src/player.cpp src/world.cpp && ./mousemaze-mac
+- g++ main.cpp -I/home/jack/Documents/Raylib/include/ -L/home/jack/Documents/Raylib/lib -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 ./src/boss.cpp ./src/leveldata.cpp ./src/player.cpp ./src/world.cpp
