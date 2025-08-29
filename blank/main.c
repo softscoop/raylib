@@ -12,7 +12,7 @@
 *   Copyright (c) 2016-2025 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-
+#include <stdio.h>
 #include "raylib.h"
 #include <math.h>
 
@@ -35,6 +35,7 @@ int main(void)
     Color buildColors[MAX_BUILDINGS] = { 0 };
 
     int spacing = 0;
+	float rotation = 0;
 
     for (int i = 0; i < MAX_BUILDINGS; i++)
     {
@@ -56,7 +57,7 @@ int main(void)
     camera.target = (Vector2){ player.x + 20.0f, player.y + 20.0f };
     camera.offset = (Vector2){ screenWidth/2.0f, screenHeight/2.0f };
     camera.rotation = 0.0f;
-    camera.zoom = 1.0f;
+    camera.zoom = 20.0f;
 
     Texture2D playerTest = LoadTexture("./player.png");
     Texture2D refCube = LoadTexture("./ref.png");
@@ -70,15 +71,17 @@ int main(void)
         // Update
         //----------------------------------------------------------------------------------
         // Player movement
-        if (IsKeyDown(KEY_RIGHT)) player.x += 2;
-        else if (IsKeyDown(KEY_LEFT)) player.x -= 2;
+        if (IsKeyDown(KEY_RIGHT)) player.x += .1f;
+        else if (IsKeyDown(KEY_LEFT)) player.x -= .1f;
+		else if (IsKeyDown(KEY_UP)) player.y -= .1f;
+		else if (IsKeyDown(KEY_DOWN)) player.y += .1f;
 
         // Camera target follows player
-        camera.target = (Vector2){ player.x + 20, player.y + 20 };
-
+        camera.target = (Vector2){ player.x,player.y };
+		
         // Camera rotation controls
-        if (IsKeyDown(KEY_A)) camera.rotation--;
-        else if (IsKeyDown(KEY_S)) camera.rotation++;
+        if (IsKeyDown(KEY_A)) rotation--;
+        else if (IsKeyDown(KEY_S)) rotation++;
 
         // Limit camera rotation to 80 degrees (-40 to 40)
         if (camera.rotation > 40) camera.rotation = 40;
@@ -88,8 +91,8 @@ int main(void)
         // Uses log scaling to provide consistent zoom speed
         camera.zoom = expf(logf(camera.zoom) + ((float)GetMouseWheelMove()*0.1f));
 
-        if (camera.zoom > 100.0f) camera.zoom = 100.0f;
-        else if (camera.zoom < 0.1f) camera.zoom = 0.1f;
+        //if (camera.zoom > 100.0f) camera.zoom = 100.0f;
+        //else if (camera.zoom < 0.1f) camera.zoom = 0.1f;
 
         // Camera reset (zoom and rotation)
         if (IsKeyPressed(KEY_R))
@@ -112,17 +115,23 @@ int main(void)
                 for (int i = 0; i < MAX_BUILDINGS; i++) DrawRectangleRec(buildings[i], buildColors[i]);
 
                 //DrawRectangleRec(player, RED);
+				
+				int ppu = 16;
+				Vector2 spriteOffset;
+				spriteOffset.x = ((float)playerTest.width / ppu) / 2;
+				spriteOffset.y = ((float)playerTest.height / ppu) / 2;
 
                 DrawLine((int)camera.target.x, -screenHeight*10, (int)camera.target.x, screenHeight*10, GREEN);
                 DrawLine(-screenWidth*10, (int)camera.target.y, screenWidth*10, (int)camera.target.y, GREEN);
                 DrawTexturePro(playerTest,(Rectangle){0,0,playerTest.width,playerTest.height},
-                (Rectangle){400.0f,340.0f,0.5f,1.8f},(Vector2){0,0}, 0.0f, WHITE);
+                (Rectangle){player.x,player.y,(float)playerTest.width / ppu,(float)playerTest.height / ppu},spriteOffset,rotation, WHITE);
                 DrawTexturePro(refCube,(Rectangle){0,0,refCube.width,refCube.height},
                 (Rectangle){400.0f,280.0f,1.f,1.f},(Vector2){0,0}, 0.0f, WHITE);
 
             EndMode2D();
 
             DrawText("SCREEN AREA", 640, 10, 20, RED);
+			printf("%f ", camera.zoom);
 
             DrawRectangle(0, 0, screenWidth, 5, RED);
             DrawRectangle(0, 5, 5, screenHeight - 10, RED);
