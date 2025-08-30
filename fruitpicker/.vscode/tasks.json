@@ -1,25 +1,10 @@
 {
     "tasks": [
         {
-            "type": "cppbuild",
+            "type": "shell",
             "label": "build raylib game",
-            "command": "C:\\mingw64\\bin\\gcc.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "main.c",
-                "-o",
-                "a.exe",
-                "-IC:/Raylib/include",
-                "-LC:/Raylib/lib",
-                "-IC:\\Users\\Jacka\\dev\\raylib\\molten\\include\\",
-                "-LC:\\Users\\Jacka\\dev\\raylib\\molten\\src\\",
-                "-lraylib",
-                "-lopengl32",
-                "-lgdi32",
-                "-lwinmm",
-                "C:\\Users\\Jacka\\dev\\raylib\\molten\\\\src\\timer.c",
-            ],
+            "command": "mingw32-make win",
+            "args": [],
             "options": {
                 "cwd": "${fileDirname}"
             },

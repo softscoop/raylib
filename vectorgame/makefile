@@ -6,5 +6,5 @@ a.out: main.c
 
 win: a.exe
 	
-a.exe: main.c
-	gcc -fdiagnostics-color=always -g main.c -IC:/Raylib/include -LC:/Raylib/lib -lraylib -lopengl32 -lgdi32 -lwinmm -std=c99
+a.exe: main.cpp
+	g++ -fdiagnostics-color=always -g main.cpp -IC:/Raylib/include -LC:/Raylib/lib -lraylib -lopengl32 -lgdi32 -lwinmm
