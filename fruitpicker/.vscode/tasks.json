@@ -12,10 +12,13 @@
                 "a.exe",
                 "-IC:/Raylib/include",
                 "-LC:/Raylib/lib",
+                "-IC:\\Users\\Jacka\\dev\\raylib\\molten\\include\\",
+                "-LC:\\Users\\Jacka\\dev\\raylib\\molten\\src\\",
                 "-lraylib",
                 "-lopengl32",
                 "-lgdi32",
-                "-lwinmm"
+                "-lwinmm",
+                "C:\\Users\\Jacka\\dev\\raylib\\molten\\\\src\\timer.c",
             ],
             "options": {
                 "cwd": "${fileDirname}"
