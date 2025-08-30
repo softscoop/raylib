@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <raylib.h>
-#include "../molten/include/molten.h"
+#include "../../molten/include/molten.h"
 
 #define SPRITE_SIZE 64
 
 extern bool switchGame;
 extern int selection;
-extern int screenWidth;
-extern int screenHeight;
+static int screenWidth = 640;
+static int screenHeight = 480;
 
 static Vector2 mousePos = {-40,-40};
 static Vector2 fruitPos;
@@ -23,18 +23,19 @@ static Texture2D fruitSprites[7];
 void FruitClickerInput(void){
     if (gameFirstFrame){
         SetWindowTitle(TextFormat("%s", "Fruit Clicker"));
+        SetWindowSize(640,480);
         HideCursor();
         Vector2 fruitPos = {GetRandomValue(0, (screenWidth - 1) - SPRITE_SIZE),
         GetRandomValue(0, (screenHeight - 1) - SPRITE_SIZE)};
-        background = LoadTexture("./assets/backgrounds/background.png");
-        mouseSprite = LoadTexture("./assets/mouse.png");
-        fruitSprites[0] = LoadTexture("./assets/sprites/apple.png");
-        fruitSprites[1] = LoadTexture("./assets/sprites/blueberry.png");
-        fruitSprites[2] = LoadTexture("./assets/sprites/cherry.png");
-        fruitSprites[3] = LoadTexture("./assets/sprites/grapes.png");
-        fruitSprites[4] = LoadTexture("./assets/sprites/lemon.png");
-        fruitSprites[5] = LoadTexture("./assets/sprites/melon.png");
-        fruitSprites[6] = LoadTexture("./assets/sprites/strawberry.png");
+        background = LoadTexture("./assets/fruitclicker/backgrounds/background.png");
+        mouseSprite = LoadTexture("./assets/fruitclicker/mouse.png");
+        fruitSprites[0] = LoadTexture("./assets/fruitclicker/sprites/apple.png");
+        fruitSprites[1] = LoadTexture("./assets/fruitclicker/sprites/blueberry.png");
+        fruitSprites[2] = LoadTexture("./assets/fruitclicker/sprites/cherry.png");
+        fruitSprites[3] = LoadTexture("./assets/fruitclicker/sprites/grapes.png");
+        fruitSprites[4] = LoadTexture("./assets/fruitclicker/sprites/lemon.png");
+        fruitSprites[5] = LoadTexture("./assets/fruitclicker/sprites/melon.png");
+        fruitSprites[6] = LoadTexture("./assets/fruitclicker/sprites/strawberry.png");
         TimerStart(&playTimer);
         gameFirstFrame = false;
     }

@@ -2,8 +2,8 @@
 #include <raylib.h>
 #include <math.h>
 
-const int screenWidth = 640;
-const int screenHeight = 480;
+const int screenWidth = 500;
+const int screenHeight = 500;
 
 void GameSwitcher(void);
 
@@ -19,11 +19,11 @@ typedef struct Game{
 } Game;
 
 extern void FruitClickerInput(), FruitClickerUpdate(), FruitClickerDraw();
-extern void TestGame2Input(), TestGame2Update(), TestGame2Draw();
+extern void DigiPetInput(), DigiPetUpdate(), DigiPetDraw();
 
 Game games[] = {
     {FruitClickerInput, FruitClickerUpdate, FruitClickerDraw, "Fruit Clicker"},
-    {TestGame2Input, TestGame2Update, TestGame2Draw, "TestGame2"}};
+    {DigiPetInput, DigiPetUpdate, DigiPetDraw, "TestGame2"}};
 Game CurrentGame;
 bool switchGame = true;
 int selection = 0;

@@ -16,8 +16,8 @@
                 "-lopengl32",
                 "-lgdi32",
                 "-lwinmm",
-                "fruitclicker.c",
-                "testgame2.c",
+                "./src/fruitclicker.c",
+                "./src/digipet.c",
                 "C:\\Users\\Jacka\\dev\\raylib\\molten\\src\\timer.c"
             ],
             "options": {
