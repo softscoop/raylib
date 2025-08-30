@@ -21,9 +21,14 @@ static Texture2D mouseSprite;
 static Texture2D fruitSprites[7];
 
 void FruitClickerInput(void){
+    if (IsKeyPressed(KEY_P)){
+        switchGame = true;
+        selection = 1;
+    } 
     if (gameFirstFrame){
         SetWindowTitle(TextFormat("%s", "Fruit Clicker"));
         SetWindowSize(640,480);
+        SetWindowPosition((1366 / 2) - (screenWidth / 2), (758 / 2) - (screenHeight / 2));
         HideCursor();
         Vector2 fruitPos = {GetRandomValue(0, (screenWidth - 1) - SPRITE_SIZE),
         GetRandomValue(0, (screenHeight - 1) - SPRITE_SIZE)};

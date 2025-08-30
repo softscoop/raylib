@@ -4,9 +4,9 @@
 
 extern bool switchGame;
 extern int selection;
-extern int screenWidth;
-extern int screenHeight;
 
+static int screenWidth = 500;
+static int screenHeight = 500;
 static int appWidth = 500;
 static int appHeight = 500;
 static int pixelGameWidth = 128;
@@ -68,6 +68,7 @@ void DigiPetInput(void){
     if (gameFirstFrame){
         SetWindowTitle(TextFormat("%s", "Digi Pet"));
         SetWindowSize(500,500);
+        SetWindowPosition((1366 / 2) - (screenWidth / 2), (758 / 2) - (screenHeight / 2));
         HideCursor();
         statNumbers[0] = (LoadTexture("./assets/digipet/sprites/00.png"));
         statNumbers[1] = (LoadTexture("./assets/digipet/sprites/01.png"));

@@ -6,5 +6,5 @@ a.out: main.c
 
 win: a.exe
 	
-a.exe: main.c
-	gcc -fdiagnostics-color=always -g main.c -IC:/Raylib/include -LC:/Raylib/lib -lraylib -lopengl32 -lgdi32 -lwinmm -std=c99 fruitclicker.c -LC:\Users\Jack\dev\raylib\molten\src C:\Users\Jack\dev\raylib\molten\src\timer.c testgame2.c
+a.exe: main.c ./src/fruitclicker.c ./src/digipet.c
+	gcc -fdiagnostics-color=always -g main.c -IC:/Raylib/include -LC:/Raylib/lib -lraylib -lopengl32 -lgdi32 -lwinmm -std=c99 -LC:\Users\Jack\dev\raylib\molten\src C:\Users\Jacka\dev\raylib\molten\src\timer.c C:\Users\Jacka\dev\raylib\multi\src\fruitclicker.c C:\Users\Jacka\dev\raylib\multi\src\digipet.c

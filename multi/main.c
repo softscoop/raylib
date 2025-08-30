@@ -2,8 +2,8 @@
 #include <raylib.h>
 #include <math.h>
 
-const int screenWidth = 500;
-const int screenHeight = 500;
+const int screenWidth = 10;
+const int screenHeight = 10;
 
 void GameSwitcher(void);
 
@@ -23,7 +23,7 @@ extern void DigiPetInput(), DigiPetUpdate(), DigiPetDraw();
 
 Game games[] = {
     {FruitClickerInput, FruitClickerUpdate, FruitClickerDraw, "Fruit Clicker"},
-    {DigiPetInput, DigiPetUpdate, DigiPetDraw, "TestGame2"}};
+    {DigiPetInput, DigiPetUpdate, DigiPetDraw, "Digi Pet"}};
 Game CurrentGame;
 bool switchGame = true;
 int selection = 0;
