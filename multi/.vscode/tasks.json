@@ -16,8 +16,9 @@
                 "-lopengl32",
                 "-lgdi32",
                 "-lwinmm",
-                "testgame1.c",
-                "testgame2.c"
+                "fruitclicker.c",
+                "testgame2.c",
+                "C:\\Users\\Jacka\\dev\\raylib\\molten\\src\\timer.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"
