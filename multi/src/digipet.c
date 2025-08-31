@@ -4,6 +4,7 @@
 
 extern bool switchGame;
 extern int selection;
+extern bool gameFirstFrame;
 
 static int screenWidth = 500;
 static int screenHeight = 500;
@@ -12,7 +13,6 @@ static int appHeight = 500;
 static int pixelGameWidth = 128;
 static int pixelGameHeight = 128;
 static int selector = 2;
-static bool gameFirstFrame = true;
 static Texture2D statNumbers[11];
 static Texture2D vectorCase;
 static Texture2D menu;
@@ -215,6 +215,11 @@ void DigiPetDraw(void){
         ClearBackground(BLACK);
         DrawTexturePro(vectorCaseTexture.texture,(Rectangle){0,0,500,-500},(Rectangle){0,0,500,500},(Vector2){0,0},0.0f,WHITE);
     EndDrawing();
+    if (IsKeyPressed(KEY_O)){
+        gameFirstFrame = true;
+        switchGame = true;
+        selection = 0;
+    } 
 }
 
 void PetUpdate(Pet* p){

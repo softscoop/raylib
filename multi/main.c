@@ -4,7 +4,7 @@
 
 const int screenWidth = 10;
 const int screenHeight = 10;
-
+bool gameFirstFrame = true;
 void GameSwitcher(void);
 
 typedef void (*Input)(void);

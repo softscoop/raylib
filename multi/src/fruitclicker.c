@@ -6,6 +6,7 @@
 
 extern bool switchGame;
 extern int selection;
+extern bool gameFirstFrame;
 static int screenWidth = 640;
 static int screenHeight = 480;
 
@@ -15,16 +16,11 @@ static int score = 0;
 static int highscore = 0;
 static int randFruitPick = 0;
 static Timer playTimer;
-static bool gameFirstFrame = true;
 static Texture2D background;
 static Texture2D mouseSprite;
 static Texture2D fruitSprites[7];
 
 void FruitClickerInput(void){
-    if (IsKeyPressed(KEY_P)){
-        switchGame = true;
-        selection = 1;
-    } 
     if (gameFirstFrame){
         SetWindowTitle(TextFormat("%s", "Fruit Clicker"));
         SetWindowSize(640,480);
@@ -74,5 +70,11 @@ void FruitClickerDraw(void){
         DrawText(TextFormat("Score: %d/%d", score, highscore), 10,10,30, BLACK);
         DrawTexture(mouseSprite,GetMousePosition().x, GetMousePosition().y, WHITE);
     EndDrawing();
+
+  if (IsKeyPressed(KEY_P)){
+        gameFirstFrame = true;
+        switchGame = true;
+        selection = 1;
+    } 
     return;
 }
