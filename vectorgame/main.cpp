@@ -16,7 +16,7 @@ int main(void)
     Vector3 normalisedVector = {0,0,0};
     
     float speed = 0;
-    float topSpeed = 5;
+    float topSpeed = 10;
     float acceleration = 0.4;
     float friction = 0.09;
 
@@ -41,7 +41,7 @@ int main(void)
                 if (normalisedVector.z > 0){
                     ball.x += normalisedVector.x * (speed / test);
                     ball.y += normalisedVector.y * (speed / test);
-					speed >= topSpeed ? speed = topSpeed : speed;
+					speed < 0 ? speed = 0 : speed -= 0.4f;
                 }
             }
     }
@@ -57,6 +57,8 @@ int main(void)
             ClearBackground(RAYWHITE);
 
             DrawText(TextFormat("Mag: %.2f", normalisedVector.z), 10, 10, 20, BLACK);
+            DrawText(TextFormat("Speed: %.2f", speed), 10, 40, 20, BLACK);
+			
             DrawCircle( (int)ball.x, (int)ball.y, 20, RED );
 
         EndDrawing();
