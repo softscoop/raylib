@@ -4,8 +4,10 @@
 
 extern bool switchGame;
 extern int selection;
-extern int screenWidth;
-extern int screenHeight;
+extern bool gameFirstFrame;
+
+static int screenWidth;
+static int screenHeight;
 
 void BlankInput(void){
 }
@@ -14,4 +16,6 @@ void BlankUpdate(void){
 }
 
 void BlankDraw(void){
+    BeginDrawing();
+    EndDrawing();
 }
