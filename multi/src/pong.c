@@ -36,8 +36,8 @@ void PongInput(void){
 void PongUpdate(void){
     ball.x += ballVector.x * ballSpeed;
     ball.y += ballVector.y * ballSpeed;
-    if (ball.y > cpuPaddle.y) cpuPaddle.y += 10;
-    else if (ball.y < cpuPaddle.y) cpuPaddle.y -=10;
+    if (ball.y > cpuPaddle.y + 50) cpuPaddle.y += 10;
+    else if (ball.y < cpuPaddle.y + 50) cpuPaddle.y -=10;
 
     if (playerPaddle.y < 0) playerPaddle.y = 0;
     if (playerPaddle.y >= screenHeight - 100) playerPaddle.y = screenHeight - 100;
