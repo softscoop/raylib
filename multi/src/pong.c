@@ -14,8 +14,9 @@ static Vector2 ballVector = {-1,0};
 static Vector2 playerPaddle = {20,20};
 static Vector2 cpuPaddle = {(screenWidth - 20) - 20,20};
 static int paddleSpeed = 10;
-static int ballSpeed = 10;
+static int ballSpeed = 8;
 static int ballRadius = 20;
+static bool allowCollision = true;
 
 void PongInput(void){
     if(gameFirstFrame){
@@ -45,15 +46,19 @@ void PongUpdate(void){
     if (cpuPaddle.y < 0) cpuPaddle.y = 0;
     if (cpuPaddle.y >= screenHeight - 100) cpuPaddle.y = screenHeight - 100;
 
-    if (CheckCollisionCircleRec(ball,ballRadius,(Rectangle){playerPaddle.x,playerPaddle.y,20,100}) ||
-        CheckCollisionCircleRec(ball,ballRadius,(Rectangle){cpuPaddle.x,cpuPaddle.y,20,100})){
+    if ((CheckCollisionCircleRec(ball,ballRadius,(Rectangle){playerPaddle.x,playerPaddle.y,20,100}) ||
+        CheckCollisionCircleRec(ball,ballRadius,(Rectangle){cpuPaddle.x,cpuPaddle.y,20,100}))
+        && allowCollision == true){            
         ballVector.x = -ballVector.x;
         //ballVector.y = -ballVector.y;
+        allowCollision = false;
     }
     if (ball.x >= screenWidth - ballRadius) ballVector.x = -ballVector.x;
     if (ball.x < 0 + ballRadius) ballVector.x = -ballVector.x;
     if (ball.y >= screenHeight - ballRadius) ballVector.y = -ballVector.y;
     if (ball.y < 0 + ballRadius) ballVector.y = -ballVector.y;
+
+    if (ball.x >= 100 && ball.y < screenWidth - 100) allowCollision = true;
 }
 
 void PongDraw(void){
