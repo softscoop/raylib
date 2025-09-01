@@ -71,10 +71,10 @@ void FruitClickerDraw(void){
         DrawTexture(mouseSprite,GetMousePosition().x, GetMousePosition().y, WHITE);
     EndDrawing();
 
-  if (IsKeyPressed(KEY_P)){
+  if (IsKeyPressed(KEY_M)){
         gameFirstFrame = true;
         switchGame = true;
-        selection = 2;
+        selection = 0;
     } 
     return;
 }

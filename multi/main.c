@@ -18,7 +18,7 @@ MiniGame games[] = {
     {DigiPetInput, DigiPetUpdate, DigiPetDraw, "Digi Pet"}};
 MiniGame CurrentGame;
 bool switchGame = true;
-int selection = 1;
+int selection = 0;
 int gameCount = sizeof(games) / sizeof(games[0]);
 
 int main(void){

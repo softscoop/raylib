@@ -215,10 +215,10 @@ void DigiPetDraw(void){
         ClearBackground(BLACK);
         DrawTexturePro(vectorCaseTexture.texture,(Rectangle){0,0,500,-500},(Rectangle){0,0,500,500},(Vector2){0,0},0.0f,WHITE);
     EndDrawing();
-    if (IsKeyPressed(KEY_O)){
+    if (IsKeyPressed(KEY_M)){
         gameFirstFrame = true;
         switchGame = true;
-        selection = 1;
+        selection = 0;
     } 
 }
 

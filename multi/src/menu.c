@@ -2,6 +2,10 @@
 #include <raylib.h>
 #include "../../molten/include/molten.h"
 
+#define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
+
+
 extern bool switchGame;
 extern int selection;
 extern bool gameFirstFrame;
@@ -17,6 +21,7 @@ void MenuInput(void){
         SetWindowSize(500,500);
         SetWindowPosition((1366 / 2) - (screenWidth / 2), (758 / 2) - (screenHeight / 2));
         gameFirstFrame = false;
+        ShowCursor();
     }
 }
 
@@ -25,6 +30,16 @@ void MenuUpdate(void){
 
 void MenuDraw(void){
     BeginDrawing();
-        DrawRectangle(2,3,32,32,RED);
+        ClearBackground(WHITE);
+        if (GuiButton((Rectangle){ 24, 24, 120, 30 }, "Fruit Clicker")){
+            switchGame = true;
+            selection = 1;
+            gameFirstFrame = true;
+        }
+        if (GuiButton((Rectangle){ 24, 70, 120, 30 }, "Digi Pet")){
+            switchGame = true;
+            selection = 2;
+            gameFirstFrame = true;
+        }
     EndDrawing();
 }
