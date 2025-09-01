@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "molten.h": "c"
+        "molten.h": "c",
+        "raymath.h": "c"
     }
 }

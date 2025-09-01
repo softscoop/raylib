@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <raylib.h>
+#include <raymath.h>
 #include "../../molten/include/molten.h"
 
 extern bool switchGame;
@@ -12,15 +13,19 @@ static Vector2 ball = {screenWidth / 2, screenHeight / 2};
 static Vector2 ballVector = {-1,0};
 static Vector2 playerPaddle = {20,20};
 static Vector2 cpuPaddle = {(screenWidth - 20) - 20,20};
-static int paddleSpeed = 5;
-static int ballSpeed = 5;
+static int paddleSpeed = 10;
+static int ballSpeed = 10;
+static int ballRadius = 20;
 
 void PongInput(void){
     if(gameFirstFrame){
         SetWindowTitle(TextFormat("%s", "Pong"));
         SetWindowSize(screenWidth,screenHeight);
         SetWindowPosition((1366 / 2) - (screenWidth / 2), (758 / 2) - (screenHeight / 2));
+        int ballAngle = GetRandomValue(135, 225);
+        ballVector.y = sin(ballAngle * (PI / 180));
         HideCursor();
+        gameFirstFrame = false;
     }
 
     if (IsKeyDown(KEY_W)) playerPaddle.y -= paddleSpeed; 
@@ -31,11 +36,24 @@ void PongInput(void){
 void PongUpdate(void){
     ball.x += ballVector.x * ballSpeed;
     ball.y += ballVector.y * ballSpeed;
+    if (ball.y > cpuPaddle.y) cpuPaddle.y += 10;
+    else if (ball.y < cpuPaddle.y) cpuPaddle.y -=10;
 
-    if (CheckCollisionCircleRec(ball,10.0f,(Rectangle){playerPaddle.x,playerPaddle.y,20,100})){
+    if (playerPaddle.y < 0) playerPaddle.y = 0;
+    if (playerPaddle.y >= screenHeight - 100) playerPaddle.y = screenHeight - 100;
+
+    if (cpuPaddle.y < 0) cpuPaddle.y = 0;
+    if (cpuPaddle.y >= screenHeight - 100) cpuPaddle.y = screenHeight - 100;
+
+    if (CheckCollisionCircleRec(ball,ballRadius,(Rectangle){playerPaddle.x,playerPaddle.y,20,100}) ||
+        CheckCollisionCircleRec(ball,ballRadius,(Rectangle){cpuPaddle.x,cpuPaddle.y,20,100})){
         ballVector.x = -ballVector.x;
-        ballVector.y = -ballVector.y;
+        //ballVector.y = -ballVector.y;
     }
+    if (ball.x >= screenWidth - ballRadius) ballVector.x = -ballVector.x;
+    if (ball.x < 0 + ballRadius) ballVector.x = -ballVector.x;
+    if (ball.y >= screenHeight - ballRadius) ballVector.y = -ballVector.y;
+    if (ball.y < 0 + ballRadius) ballVector.y = -ballVector.y;
 }
 
 void PongDraw(void){
@@ -43,7 +61,7 @@ void PongDraw(void){
         ClearBackground(BLACK);
         DrawRectangle(playerPaddle.x,playerPaddle.y,20, 100, RED);
         DrawRectangle(cpuPaddle.x,cpuPaddle.y,20, 100, RED);
-        DrawCircle(ball.x,ball.y,10,RED);
+        DrawCircle(ball.x,ball.y,ballRadius,RED);
     EndDrawing();
     if (IsKeyPressed(KEY_M)){
         gameFirstFrame = true;
