@@ -13,10 +13,12 @@ static Vector2 ball = {screenWidth / 2, screenHeight / 2};
 static Vector2 ballVector = {-1,0};
 static Vector2 playerPaddle = {20,20};
 static Vector2 cpuPaddle = {(screenWidth - 20) - 20,20};
-static int paddleSpeed = 10;
-static int ballSpeed = 8;
+static int paddleSpeed = 7;
+static int ballSpeed = 10;
 static int ballRadius = 20;
 static bool allowCollision = true;
+static Vector2 prevBallPos[10];
+static int prevBallPosSize = sizeof(prevBallPos) / sizeof(prevBallPos[0]);
 
 void PongInput(void){
     if(gameFirstFrame){
@@ -37,8 +39,8 @@ void PongInput(void){
 void PongUpdate(void){
     ball.x += ballVector.x * ballSpeed;
     ball.y += ballVector.y * ballSpeed;
-    if (ball.y > cpuPaddle.y + 50) cpuPaddle.y += 10;
-    else if (ball.y < cpuPaddle.y + 50) cpuPaddle.y -=10;
+    if (prevBallPos[prevBallPosSize -1].y > cpuPaddle.y + 50) cpuPaddle.y += paddleSpeed;
+    else if (prevBallPos[prevBallPosSize -1].y < cpuPaddle.y + 50) cpuPaddle.y -= paddleSpeed;
 
     if (playerPaddle.y < 0) playerPaddle.y = 0;
     if (playerPaddle.y >= screenHeight - 100) playerPaddle.y = screenHeight - 100;
@@ -59,6 +61,11 @@ void PongUpdate(void){
     if (ball.y < 0 + ballRadius) ballVector.y = -ballVector.y;
 
     if (ball.x >= 100 && ball.y < screenWidth - 100) allowCollision = true;
+    //shuffle array and add final position
+    for (int i = (sizeof(prevBallPos) / sizeof(prevBallPos[0]) - 2); i >= 0; i--){
+        prevBallPos[i+1] = prevBallPos[i];
+    }
+    prevBallPos[0] = ball;
 }
 
 void PongDraw(void){
@@ -67,6 +74,8 @@ void PongDraw(void){
         DrawRectangle(playerPaddle.x,playerPaddle.y,20, 100, RED);
         DrawRectangle(cpuPaddle.x,cpuPaddle.y,20, 100, RED);
         DrawCircle(ball.x,ball.y,ballRadius,RED);
+        DrawLine(ball.x,ball.y, prevBallPos[prevBallPosSize - 1].x, prevBallPos[prevBallPosSize -1].y, GREEN);
+        DrawCircle(prevBallPos[prevBallPosSize - 1].x,prevBallPos[prevBallPosSize -1].y,ballRadius,BLUE);
     EndDrawing();
     if (IsKeyPressed(KEY_M)){
         gameFirstFrame = true;
