@@ -74,7 +74,7 @@ void FruitClickerDraw(void){
   if (IsKeyPressed(KEY_P)){
         gameFirstFrame = true;
         switchGame = true;
-        selection = 1;
+        selection = 2;
     } 
     return;
 }

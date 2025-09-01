@@ -218,7 +218,7 @@ void DigiPetDraw(void){
     if (IsKeyPressed(KEY_O)){
         gameFirstFrame = true;
         switchGame = true;
-        selection = 0;
+        selection = 1;
     } 
 }
 

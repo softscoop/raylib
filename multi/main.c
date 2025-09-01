@@ -1,32 +1,24 @@
 #include <stdio.h>
 #include <raylib.h>
 #include <math.h>
+#include "../molten/include/molten.h"
 
 const int screenWidth = 10;
 const int screenHeight = 10;
 bool gameFirstFrame = true;
 void GameSwitcher(void);
 
-typedef void (*Input)(void);
-typedef void (*Update)(void);
-typedef void (*Draw)(void);
-
-typedef struct Game{
-    Input Input;
-    Update Update;
-    Draw Draw;
-    char* name; 
-} Game;
-
+extern void MenuInput(), MenuUpdate(), MenuDraw();
 extern void FruitClickerInput(), FruitClickerUpdate(), FruitClickerDraw();
 extern void DigiPetInput(), DigiPetUpdate(), DigiPetDraw();
 
-Game games[] = {
+MiniGame games[] = {
+    {MenuInput, MenuUpdate, MenuDraw, "Menu"},
     {FruitClickerInput, FruitClickerUpdate, FruitClickerDraw, "Fruit Clicker"},
     {DigiPetInput, DigiPetUpdate, DigiPetDraw, "Digi Pet"}};
-Game CurrentGame;
+MiniGame CurrentGame;
 bool switchGame = true;
-int selection = 0;
+int selection = 1;
 int gameCount = sizeof(games) / sizeof(games[0]);
 
 int main(void){
