@@ -31,7 +31,7 @@ void MenuUpdate(void){
 void MenuDraw(void){
     BeginDrawing();
         ClearBackground(WHITE);
-        for (int i = 1; i < 3; i++){
+        for (int i = 1; i < 4; i++){
             if (GuiButton((Rectangle){ 24, 24 + ((i-1) * 35), 120, 30 }, TextFormat("%s", games[i].name))){
             switchGame = true;
             selection = i;

@@ -11,14 +11,16 @@ void GameSwitcher(void);
 extern void MenuInput(), MenuUpdate(), MenuDraw();
 extern void FruitClickerInput(), FruitClickerUpdate(), FruitClickerDraw();
 extern void DigiPetInput(), DigiPetUpdate(), DigiPetDraw();
+extern void PongInput(), PongUpdate(), PongDraw();
 
 MiniGame games[] = {
     {MenuInput, MenuUpdate, MenuDraw, "Menu"},
+    {PongInput,PongUpdate,PongDraw, "Pong"},
     {FruitClickerInput, FruitClickerUpdate, FruitClickerDraw, "Fruit Clicker"},
     {DigiPetInput, DigiPetUpdate, DigiPetDraw, "Digi Pet"}};
 MiniGame CurrentGame;
 bool switchGame = true;
-int selection = 0;
+int selection = 1;
 int gameCount = sizeof(games) / sizeof(games[0]);
 
 int main(void){
