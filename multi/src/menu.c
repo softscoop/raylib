@@ -31,15 +31,12 @@ void MenuUpdate(void){
 void MenuDraw(void){
     BeginDrawing();
         ClearBackground(WHITE);
-        if (GuiButton((Rectangle){ 24, 24, 120, 30 }, "Fruit Clicker")){
+        for (int i = 1; i < 3; i++){
+            if (GuiButton((Rectangle){ 24, 24 + ((i-1) * 35), 120, 30 }, TextFormat("%s", games[i].name))){
             switchGame = true;
-            selection = 1;
+            selection = i;
             gameFirstFrame = true;
-        }
-        if (GuiButton((Rectangle){ 24, 70, 120, 30 }, "Digi Pet")){
-            switchGame = true;
-            selection = 2;
-            gameFirstFrame = true;
+            }
         }
     EndDrawing();
 }
