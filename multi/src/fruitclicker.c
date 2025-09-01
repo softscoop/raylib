@@ -37,6 +37,7 @@ void FruitClickerInput(void){
         fruitSprites[4] = LoadTexture("./assets/fruitclicker/sprites/lemon.png");
         fruitSprites[5] = LoadTexture("./assets/fruitclicker/sprites/melon.png");
         fruitSprites[6] = LoadTexture("./assets/fruitclicker/sprites/strawberry.png");
+        score = 0;
         TimerStart(&playTimer);
         gameFirstFrame = false;
     }
