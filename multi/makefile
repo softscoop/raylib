@@ -1,4 +1,4 @@
-run: a.out
+lin: a.out
 	./a.out
 
 a.out: main.c
