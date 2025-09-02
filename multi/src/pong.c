@@ -14,7 +14,7 @@ static Vector2 ballVector = {-1,0};
 static Vector2 playerPaddle = {20,20};
 static Vector2 cpuPaddle = {(screenWidth - 20) - 20,20};
 static int paddleSpeed = 7;
-static int ballSpeed = 10;
+static int ballSpeed = 2;
 static int ballRadius = 20;
 static bool allowCollision = true;
 static Vector2 prevBallPos[10];
@@ -33,6 +33,8 @@ void PongInput(void){
 
     if (IsKeyDown(KEY_W)) playerPaddle.y -= paddleSpeed; 
     if (IsKeyDown(KEY_S)) playerPaddle.y += paddleSpeed; 
+    if (IsKeyPressed(KEY_O)) ballSpeed++; 
+    if (IsKeyPressed(KEY_I)) ballSpeed--; 
     
 }
 

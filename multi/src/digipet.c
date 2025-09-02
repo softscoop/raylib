@@ -107,57 +107,49 @@ void DigiPetInput(void){
     if (IsKeyPressed(KEY_A) && selector > 2) selector -= 1;
     if (IsKeyPressed(KEY_D) && selector < 5) selector += 1;
 
-    if (IsKeyPressed(KEY_K)){
+    if ( IsKeyPressed(KEY_K) || IsKeyPressed(KEY_SPACE)){
         switch (selector){
             case FEED:
-                if(IsKeyPressed(KEY_K)){
-                    pet.health = ClampF(pet.health += 1.f, 0.f,10.f);
-                    TimerStart(&pet.healthTimer);
-                    pet.mood = ClampF(pet.mood += 1.f, 0.f,10.f);
-                    TimerStart(&pet.moodTimer);
-                    pet.hunger = ClampF(pet.hunger += 2.f, 0.f,10.f);
-                    TimerStart(&pet.hungerTimer);
-                    //pet.play = ClampF(pet.play -= 2.f, 0.f,10.f);
-                    //pet.comfort = ClampF(pet.comfort -= 2.f, 0.f,10.f);
-                    //pet.tiredness = ClampF(pet.tiredness -= 2.f, 0.f,10.f);
-                }
+                pet.health = ClampF(pet.health += 1.f, 0.f,10.f);
+                TimerStart(&pet.healthTimer);
+                pet.mood = ClampF(pet.mood += 1.f, 0.f,10.f);
+                TimerStart(&pet.moodTimer);
+                pet.hunger = ClampF(pet.hunger += 2.f, 0.f,10.f);
+                TimerStart(&pet.hungerTimer);
+                //pet.play = ClampF(pet.play -= 2.f, 0.f,10.f);
+                //pet.comfort = ClampF(pet.comfort -= 2.f, 0.f,10.f);
+                //pet.tiredness = ClampF(pet.tiredness -= 2.f, 0.f,10.f);
             break;
             case PLAY:
-                if(IsKeyPressed(KEY_K)){
-                    pet.health = ClampF(pet.health += 0.5f, 0.f,10.f);
-                    TimerStart(&pet.healthTimer);
-                    pet.mood = ClampF(pet.mood += 1.f, 0.f,10.f);
-                    TimerStart(&pet.moodTimer);
-                    pet.hunger = ClampF(pet.hunger -= 0.5f, 0.f,10.f);
-                    TimerStart(&pet.hungerTimer);
-                    pet.play = ClampF(pet.play += 2.f, 0.f,10.f);
-                    TimerStart(&pet.playTimer);
-                    //pet.comfort = ClampF(pet.comfort -= 2.f, 0.f,10.f);
-                    pet.tiredness = ClampF(pet.tiredness -= 0.5f, 0.f,10.f);
-                    TimerStart(&pet.tirednessTimer);                                        
-                }
+                pet.health = ClampF(pet.health += 0.5f, 0.f,10.f);
+                TimerStart(&pet.healthTimer);
+                pet.mood = ClampF(pet.mood += 1.f, 0.f,10.f);
+                TimerStart(&pet.moodTimer);
+                pet.hunger = ClampF(pet.hunger -= 0.5f, 0.f,10.f);
+                TimerStart(&pet.hungerTimer);
+                pet.play = ClampF(pet.play += 2.f, 0.f,10.f);
+                TimerStart(&pet.playTimer);
+                //pet.comfort = ClampF(pet.comfort -= 2.f, 0.f,10.f);
+                pet.tiredness = ClampF(pet.tiredness -= 0.5f, 0.f,10.f);
+                TimerStart(&pet.tirednessTimer);
                 break;
             case COMFORT:
-                if(IsKeyPressed(KEY_K)){
-                    //pet.health = ClampF(pet.health += 1.f, 0.f,10.f);
-                    //pet.mood = ClampF(pet.mood += 1.f, 0.f,10.f);
-                    //pet.hunger = ClampF(pet.hunger -= 0.5f, 0.f,10.f);
-                    //pet.play = ClampF(pet.play += 2.f, 0.f,10.f);
-                    pet.comfort = ClampF(pet.comfort += 2.f, 0.f,10.f);
-                    TimerStart(&pet.comfortTimer);
-                    //pet.tiredness = ClampF(pet.tiredness -= 2.5f, 0.f,10.f);                                        
-                    }
+                //pet.health = ClampF(pet.health += 1.f, 0.f,10.f);
+                //pet.mood = ClampF(pet.mood += 1.f, 0.f,10.f);
+                //pet.hunger = ClampF(pet.hunger -= 0.5f, 0.f,10.f);
+                //pet.play = ClampF(pet.play += 2.f, 0.f,10.f);
+                pet.comfort = ClampF(pet.comfort += 2.f, 0.f,10.f);
+                TimerStart(&pet.comfortTimer);
+                //pet.tiredness = ClampF(pet.tiredness -= 2.5f, 0.f,10.f);
                 break;
             case REST:
-                if(IsKeyPressed(KEY_K)){
-                    //pet.health = ClampF(pet.health += 1.f, 0.f,10.f);
-                    //pet.mood = ClampF(pet.mood += 1.f, 0.f,10.f);
-                    //pet.hunger = ClampF(pet.hunger -= 0.5f, 0.f,10.f);
-                    //pet.play = ClampF(pet.play += 2.f, 0.f,10.f);
-                    //pet.comfort = ClampF(pet.comfort -= 2.f, 0.f,10.f);
-                    pet.tiredness = ClampF(pet.tiredness += 2.5f, 0.f,10.f);
-                    TimerStart(&pet.tirednessTimer);                                        
-                }
+                //pet.health = ClampF(pet.health += 1.f, 0.f,10.f);
+                //pet.mood = ClampF(pet.mood += 1.f, 0.f,10.f);
+                //pet.hunger = ClampF(pet.hunger -= 0.5f, 0.f,10.f);
+                //pet.play = ClampF(pet.play += 2.f, 0.f,10.f);
+                //pet.comfort = ClampF(pet.comfort -= 2.f, 0.f,10.f);
+                pet.tiredness = ClampF(pet.tiredness += 2.5f, 0.f,10.f);
+                TimerStart(&pet.tirednessTimer);
                 break;
             default:
                 break;
