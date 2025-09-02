@@ -9,18 +9,22 @@ bool gameFirstFrame = true;
 void GameSwitcher(void);
 
 extern void MenuInput(), MenuUpdate(), MenuDraw();
+extern void PongInput(), PongUpdate(), PongDraw();
 extern void FruitClickerInput(), FruitClickerUpdate(), FruitClickerDraw();
 extern void DigiPetInput(), DigiPetUpdate(), DigiPetDraw();
-extern void PongInput(), PongUpdate(), PongDraw();
+extern void CircleInput(), CircleUpdate(), CircleDraw();
 
 MiniGame games[] = {
     {MenuInput, MenuUpdate, MenuDraw, "Menu"},
     {PongInput,PongUpdate,PongDraw, "Pong"},
     {FruitClickerInput, FruitClickerUpdate, FruitClickerDraw, "Fruit Clicker"},
-    {DigiPetInput, DigiPetUpdate, DigiPetDraw, "Digi Pet"}};
+    {DigiPetInput, DigiPetUpdate, DigiPetDraw, "Digi Pet"},
+    {CircleInput, CircleUpdate, CircleDraw, "Circle"}
+
+};
 MiniGame CurrentGame;
 bool switchGame = true;
-int selection = 1;
+int selection = 4;
 int gameCount = sizeof(games) / sizeof(games[0]);
 
 int main(void){
