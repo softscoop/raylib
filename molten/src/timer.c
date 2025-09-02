@@ -1,4 +1,4 @@
-#include "..\include\molten.h"
+#include "../include/molten.h"
 #include "raylib.h"
 
 double TimerTime(Timer t){
