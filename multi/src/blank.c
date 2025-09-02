@@ -8,12 +8,10 @@ extern bool gameFirstFrame;
 
 static const int screenWidth = 640;
 static const int screenHeight = 480;
-static Vector2 ball = {screenWidth / 2, screenHeight / 2};
-static Vector2 playerPaddle = {0,0};
 
-void PongInput(void){
+void Input(void){
     if(gameFirstFrame){
-        SetWindowTitle(TextFormat("%s", "Pong"));
+        SetWindowTitle(TextFormat("%s", "Name"));
         SetWindowSize(screenWidth,screenHeight);
         SetWindowPosition((1366 / 2) - (screenWidth / 2), (758 / 2) - (screenHeight / 2));
         HideCursor();
@@ -21,10 +19,10 @@ void PongInput(void){
     
 }
 
-void PongUpdate(void){
+void Update(void){
 }
 
-void PongDraw(void){
+void Draw(void){
     BeginDrawing();
         DrawRectangle(0,0,20, 100, RED);
     EndDrawing();
