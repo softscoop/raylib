@@ -10,6 +10,7 @@ extern bool switchGame;
 extern int selection;
 extern bool gameFirstFrame;
 extern MiniGame games[];
+extern int gameCount;
 
 static int screenWidth = 500;
 static int screenHeight = 500;
@@ -31,7 +32,7 @@ void MenuUpdate(void){
 void MenuDraw(void){
     BeginDrawing();
         ClearBackground(WHITE);
-        for (int i = 1; i < 5; i++){
+        for (int i = 1; i < gameCount; i++){
             if (GuiButton((Rectangle){ 24, 24 + ((i-1) * 35), 120, 30 }, TextFormat("%s", games[i].name))){
             switchGame = true;
             selection = i;
