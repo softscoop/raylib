@@ -13,18 +13,19 @@ extern void PongInput(), PongUpdate(), PongDraw();
 extern void FruitClickerInput(), FruitClickerUpdate(), FruitClickerDraw();
 extern void DigiPetInput(), DigiPetUpdate(), DigiPetDraw();
 extern void CircleInput(), CircleUpdate(), CircleDraw();
+extern void TicInput(), TicUpdate(), TicDraw();
 
 MiniGame games[] = {
     {MenuInput, MenuUpdate, MenuDraw, "Menu"},
     {PongInput,PongUpdate,PongDraw, "Pong"},
     {FruitClickerInput, FruitClickerUpdate, FruitClickerDraw, "Fruit Clicker"},
     {DigiPetInput, DigiPetUpdate, DigiPetDraw, "Digi Pet"},
-    {CircleInput, CircleUpdate, CircleDraw, "Circle"}
-
+    {CircleInput, CircleUpdate, CircleDraw, "Circle"},
+    {TicInput, TicUpdate, TicDraw, "Tic-Tac-Toe"}
 };
 MiniGame CurrentGame;
 bool switchGame = true;
-int selection = 4;
+int selection = 5;
 int gameCount = sizeof(games) / sizeof(games[0]);
 
 int main(void){
