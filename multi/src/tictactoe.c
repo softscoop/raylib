@@ -50,11 +50,11 @@ void TicUpdate(void){
             for (int e = 0; e < 3; e++){
                 if (CheckCollisionPointRec(GetMousePosition(), gridBoxes[i][e])){
                     if (choices[i][e] == ' '){
-                        if (player1 && (choices[i][e] != 'X' || choices[i][e] != 'X')){
+                        if (player1 && (choices[i][e] != 'X' || choices[i][e] != 'O')){
                             choices[i][e] = 'X';
                             player1 = !player1;
                         }
-                        else if (!player1 && (choices[i][e] != 'X' || choices[i][e] != 'X')){
+                        else if (!player1 && (choices[i][e] != 'X' || choices[i][e] != 'O')){
                             choices[i][e] = 'O';
                             player1 = !player1;
                         }
