@@ -43,7 +43,7 @@ void CircleInput(void){
 }
 
 void CircleUpdate(void){
-    if (IsKeyPressed(KEY_SPACE)){
+    if (IsKeyPressed(KEY_SPACE) || IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
         if (CheckCollisionCircles(ball, ballRad, targetCenter, targetRad)){
             randomAngle = GetRandomValue(0, 359);
             clockwise = -clockwise;

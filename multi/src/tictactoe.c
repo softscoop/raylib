@@ -17,6 +17,7 @@ static const int centerY = 180 - 40;
 static bool player1 = true;
 static Font myFont;
 static bool gameOver = false;
+static int fontSize = 90;
 
 static Texture2D background;
 static char choices[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}};
@@ -32,7 +33,7 @@ void TicInput(void){
         SetWindowPosition((1366 / 2) - (screenWidth / 2), (758 / 2) - (screenHeight / 2));
         //HideCursor();
         background = LoadTexture("./assets/tictactoe/backgrounds/map.png");
-        myFont = LoadFontEx("./assets/tictactoe/fonts/Edges.ttf", 80, NULL,0);
+        myFont = LoadFontEx("./assets/tictactoe/fonts/Heavitas.ttf", fontSize, NULL,0);
         gameFirstFrame = false;
     }
 
@@ -73,9 +74,9 @@ void TicDraw(void){
         for (int i = 0; i < 3; i++){
             for (int e = 0; e < 3; e++){
                 if (choices[i][e] == 'X') DrawTextEx(myFont, TextFormat("%c", choices[i][e]), (Vector2){gridBoxes[i][e].x + 5, gridBoxes[i][e].y},
-                80,0,BLACK);
+                fontSize,0,BLACK);
                 else DrawTextEx(myFont, TextFormat("%c", choices[i][e]), (Vector2){gridBoxes[i][e].x + 5, gridBoxes[i][e].y},
-                80,0, BLACK);
+                fontSize,0, BLACK);
             }
         }
     EndDrawing();
