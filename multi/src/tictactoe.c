@@ -73,9 +73,9 @@ void TicDraw(void){
         DrawTexture(background, 0,0, WHITE);
         for (int i = 0; i < 3; i++){
             for (int e = 0; e < 3; e++){
-                if (choices[i][e] == 'X') DrawTextEx(myFont, TextFormat("%c", choices[i][e]), (Vector2){gridBoxes[i][e].x + 5, gridBoxes[i][e].y},
+                if (choices[i][e] == 'X') DrawTextEx(myFont, TextFormat("%c", choices[i][e]), (Vector2){gridBoxes[i][e].x + 8, gridBoxes[i][e].y + 6},
                 fontSize,0,BLACK);
-                else DrawTextEx(myFont, TextFormat("%c", choices[i][e]), (Vector2){gridBoxes[i][e].x + 5, gridBoxes[i][e].y},
+                else DrawTextEx(myFont, TextFormat("%c", choices[i][e]), (Vector2){gridBoxes[i][e].x + 5, gridBoxes[i][e].y + 8},
                 fontSize,0, BLACK);
             }
         }
